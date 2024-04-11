@@ -1,0 +1,64 @@
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border: 2px solid #3498db; /* Цвет обводки */
+    transition: border-color 0.3s; /* Анимация изменения цвета обводки */
+}
+
+.card:hover {
+    border-color: #3498db; /* Цвет обводки при наведении */
+}
+
+.card .card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card .card-inner .front,
+.card .card-inner .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card .card-inner .back {
+    transform: rotateY(180deg);
+}
+
+.card .card-inner .front {
+    background-color: #26a3f1;
+    color: #c58c8c;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+.card.matched .card-inner .front {
+    background-color: #2ecc71;
+    transform: rotateY(0deg);
+}
+
+.card.matched {
+    border-color: #2ecc71; /* Цвет обводки для совпавших пар */
+}
+
+
